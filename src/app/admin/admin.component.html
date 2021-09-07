@@ -1,0 +1,7 @@
+<p>admin works! <button (click)="getHTTPData()">get All Api</button></p>
+<div *ngIf="someSciData">
+    <span *ngFor="let item of someSciData" class="spanStyle">
+        {{item.API}}
+    </span>
+</div>
+

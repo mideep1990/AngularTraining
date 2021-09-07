@@ -1,20 +1,31 @@
-import { Component } from '@angular/core';
+declare var require: any
+import { Component , OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  constructor(){
+
+  }
+
+  ngOnInit(){
+    
+  }
+
   title = 'AngularTraining';
-  someJson = {
-    test: 'some Value',
-    tesr: 'test',
-  };
+  someVal = "";
 
   test = (f1: any) => {
-    console.log('come Value');
-
     return '<div>test</div>';
   };
+
+  message(name:string){
+    alert("I am in");
+    this.someVal = "I am sending Data to template by "+name;
+  }
+
+  
 }

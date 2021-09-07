@@ -1,0 +1,9 @@
+.testStyle{
+    color:blue;
+    font-weight:bold;
+    cursor:pointer;
+    cursor: hand;
+}
+.testStyle:hover{
+    text-decoration:underline
+}

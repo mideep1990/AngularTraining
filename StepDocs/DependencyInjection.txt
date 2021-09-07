@@ -1,0 +1,58 @@
+Without DI (How to access a service)
+=============================================
+1 - Create one service - ng g s service-name
+2 - Comment -  /*@Injectable({providedIn: 'root'})*/ on th top of the service
+3 - Create a function in service
+        getData()
+        {
+            const httpClient = new HttpClient(new HttpXhrBackend({ build: () => new XMLHttpRequest() }));
+            let url = "https://api.publicapis.org/entries?category=science";
+            return httpClient.get(url);
+        }
+4 - Create 2 components (ng g c component-name)
+5 - import { TestservService } from '../services/testserv.service'
+6 - Create a function 
+    getHTTPData()
+    {
+            this.Testserv = new TestservService();
+            this.Testserv.getData().subscribe((res) => { 
+            this.someSciData = res.entries;
+            console.log("Some1",this.someSciData);});
+    }
+7 - <p>admin works! <button (click)="getHTTPData()">get All Api</button></p>
+    <div *ngIf="someSciData">
+        <span *ngFor="let item of someSciData" class="spanStyle">
+            {{item.API}}
+        </span>
+    </div>
+
+
+With DI (How to access a service)
+=============================================
+@Injectable(providedin)----------------------
+2 - uncommented / added @Injectable({providedIn: 'root'})
+3 - constructor we created a variable of type of service
+    constructor(private testServ:TestservService) { }
+4 - Service 
+    getData()
+    {
+        let url = "https://api.publicapis.org/entries?category=science";
+        return this.http.get(url);
+    }
+5 - component
+    getHTTPData()
+    {
+        this.testServ.getData().subscribe((res) => { 
+        this.someSciData = res["entries"];
+        console.log("Some1",this.someSciData);
+    });
+    }
+
+--------------------------------------------------------------------
+provide in the root module like App module / can be provided in feature modules
+Can be provided inside the component
+@ngModule
+@component
+
+    
+

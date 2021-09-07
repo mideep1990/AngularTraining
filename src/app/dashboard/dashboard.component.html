@@ -1,0 +1,27 @@
+<p>dashboard works! <button (click)="getAllScienceData()">Get All Science Data</button></p>
+<p><app-inner></app-inner></p>
+<p><app-outer></app-outer></p>
+<div *ngIf="someSciData" class="tableDataWrap">
+    <table class="dataClass">
+        <tr>
+            <th>SL No.</th>
+            <th>API</th>
+            <th>Auth</th>
+            <th>Category</th>
+            <th>CORS</th>
+            <th>Description</th>
+            <th>HTTPS</th>
+            <th>LINK</th>
+        </tr>
+        <tr *ngFor="let item of this.someSciData;index as i">
+            <td>{{i}}</td>
+            <td>{{item.API}}</td>
+            <td>{{item.Auth}}</td>
+            <td>{{item.Category}}</td>
+            <td>{{item.Cors}}</td>
+            <td>{{item.Description}}</td>
+            <td>{{item.HTTPS}}</td>
+            <td>{{item.Link}}</td>
+        </tr>
+    </table>
+</div>
